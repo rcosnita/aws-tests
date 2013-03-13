@@ -14,11 +14,11 @@ The current version of this project allows to:
 
 * Sign aws requests using AWS Version 4 signatures [Signing spec V4](http://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html)		
 * SQS simple client that allows you to:
-	* Obtain a given queue url
-	* Create a new message
-	* Retrieve queue messages (without long polling)
-	* Delete queue messages
-	* See [SQS Integration tests](https://github.com/rcosnita/aws-tests/blob/master/aws/sqs/tests/itest_sqs_client.py)
+	+ Obtain a given queue url
+	+ Create a new message
+	+ Retrieve queue messages (without long polling)
+	+ Delete queue messages
+	+ See [SQS Integration tests](https://github.com/rcosnita/aws-tests/blob/master/aws/sqs/tests/itest_sqs_client.py)
 * Only json requests / responses are supported.
 
 ## Get started
