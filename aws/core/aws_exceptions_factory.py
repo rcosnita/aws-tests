@@ -83,7 +83,7 @@ class AwsExceptionsFactory(object):
         ex_cls = AwsExceptionsFactory._EX_REGISTRY.get(ex_code)
         
         if ex_cls:
-            return ex_cls(error_type = ex_type, error_code = ex_code, error_msg = ex_msg, request_id = request_id)
+            return ex_cls(error_type = ex_type, error_msg = ex_msg, request_id = request_id)
         
         if http_status is None or int(http_status) < 400:
             raise ValueError("Http status code %s does not indicate an error." % http_status)

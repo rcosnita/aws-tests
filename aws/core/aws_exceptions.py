@@ -41,7 +41,41 @@ class AwsGenericException(Exception):
         self.request_id = request_id
         
 class AwsAccessDeniedException(AwsGenericException):
-    '''This is a generic AWS exception thrown by all services when 403 status code is retrieved.'''
+    '''This is a generic AWS exception thrown by all services when authentication failed.'''
     
-    def __init__(self, error_type, error_code, error_msg, request_id):
-        super().__init__(http_status = 403, error_code = error_code, error_msg = error_msg, request_id = request_id)
+    def __init__(self, error_type, error_msg, request_id):
+        super().__init__(http_status = 403, error_code = "AccessDenied", error_msg = error_msg, request_id = request_id)
+        
+class AwsAuthFailureException(AwsGenericException):
+    '''This is a generic AWS exception thrown by all services when authentication failed.'''
+    
+    def __init__(self, error_type, error_msg, request_id):
+        super().__init__(http_status = 401, error_code = "AuthFailure", error_msg = error_msg, request_id = request_id)
+        
+class AwsConflictingQueryParameterException(AwsGenericException):
+    '''This is a generic AWS exception thrown by all services when some query parameters are mutual exclusive.'''
+    
+    def __init__(self, error_type, error_msg, request_id):
+        super().__init__(http_status = 400, error_code = "ConflictingQueryParameter", error_msg = error_msg, 
+                         request_id = request_id)
+        
+class AwsInternalErrorException(AwsGenericException):
+    '''This is a generic AWS exception thrown by all services when an internal server error occured.'''
+    
+    def __init__(self, error_type, error_msg, request_id):
+        super().__init__(http_status = 500, error_code = "InternalError", error_msg = error_msg, 
+                         request_id = request_id)
+        
+class AwsInvalidAccessKeyIdException(AwsGenericException):
+    '''This is a generic AWS exception thrown by all services when an invalid access key was provided.'''
+    
+    def __init__(self, error_type, error_msg, request_id):
+        super().__init__(http_status = 401, error_code = "InvalidAccessKeyId", error_msg = error_msg, 
+                         request_id = request_id)
+        
+class AwsInvalidActionException(AwsGenericException):
+    '''This is a generic AWS exception thrown by all services when an invalid action was specified.'''
+    
+    def __init__(self, error_type, error_msg, request_id):
+        super().__init__(http_status = 400, error_code = "InvalidAction", error_msg = error_msg, 
+                         request_id = request_id)
