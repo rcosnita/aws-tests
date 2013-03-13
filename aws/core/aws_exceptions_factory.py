@@ -80,7 +80,7 @@ class AwsExceptionsFactory(object):
         ex_type = ex_content.get("Type")
         ex_msg = ex_content.get("Message")
         
-        ex_cls = AwsExceptionsFactory._EX_REGISTRY.get(ex_code)
+        ex_cls = AwsExceptionsFactory._EX_REGISTRY.get(ex_code.replace(".", ""))
         
         if ex_cls:
             return ex_cls(error_type = ex_type, error_msg = ex_msg, request_id = request_id)

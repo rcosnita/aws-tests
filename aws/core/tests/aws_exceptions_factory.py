@@ -62,14 +62,16 @@ class AwsExceptionsFactoryTests(unittest.TestCase):
         
         AwsExceptionsFactory.add_exception("AccessDenied", TestEx)
         
-        ex = AwsExceptionsFactory.get_exception(self._error_response)
-        
-        self.assertIsInstance(ex, TestEx)
-        self.assertEqual(400, ex.http_status)
-        self.assertEqual("Sender", ex.error_type)
-        self.assertEqual("AccessDenied", ex.error_code)
-        self.assertEqual("Test message", ex.error_msg)
-        self.assertEqual("123", ex.request_id)
+        for code in ["AccessDenied", "Access.Denied"]:
+            self._error_response["ErrorResponse"]["Error"]["Code"] = code
+            ex = AwsExceptionsFactory.get_exception(self._error_response)
+            
+            self.assertIsInstance(ex, TestEx)
+            self.assertEqual(400, ex.http_status)
+            self.assertEqual("Sender", ex.error_type)
+            self.assertEqual("AccessDenied", ex.error_code)
+            self.assertEqual("Test message", ex.error_msg)
+            self.assertEqual("123", ex.request_id)
 
     def test_get_exception_generic(self):
         '''Test case for get exception method when no concrete exception is found but the error response is valid.'''
