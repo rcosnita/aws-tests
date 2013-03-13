@@ -5,3 +5,5 @@ dist
 .pyenv
 .out
 .coverage
+.project
+.pydevproject
