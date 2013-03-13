@@ -15,7 +15,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 
 .. codeauthor:: Radu Viorel Cosnita <radu.cosnita@gmail.com>
 
-.. py:module:: aws.core.aws_config
+.. py:module:: aws.core.tests.aws_config
 '''
 
 from aws.core import aws_config
