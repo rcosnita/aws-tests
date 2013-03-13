@@ -19,6 +19,10 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 
 Module used to hold authentication data for aws development api.
 '''
+from aws.core import aws_exceptions
+from aws.core.aws_exceptions_factory import AwsExceptionsFactory
+import inspect
+import re
 
 AWS_ACCESS_KEY = "Put your access key in here"
 AWS_SECRET_KEY = "Put you secret key in here"
@@ -43,3 +47,25 @@ def get_service_host(region, service):
     hosts = hosts.get(service)
     
     return hosts
+
+def register_exceptions(module_obj):
+    '''Method used to register all AwsGenericException subclasses.
+    
+    :param module_obj: Module object from which we want to import all exceptions.
+    :type module_obj: module    
+    '''
+    
+    exceptions = inspect.getmembers(aws_exceptions, 
+                                   lambda obj: inspect.isclass(obj) and 
+                                            issubclass(obj, aws_exceptions.AwsGenericException) and
+                                            obj != aws_exceptions.AwsGenericException)    
+    
+    errcode_pattern = "Aws(.*)Exception"
+    
+    for name, ex_class in exceptions:
+        err_code = re.findall(errcode_pattern, name)
+        
+        if len(err_code) == 0:
+            continue
+        
+        AwsExceptionsFactory._EX_REGISTRY[err_code[0]] = ex_class
