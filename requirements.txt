@@ -1,0 +1,4 @@
+# These are the requirements needed for Travis CI configuration of this project.
+nose
+mock
+httplib2
