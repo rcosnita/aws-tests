@@ -23,8 +23,8 @@ from aws.core.aws_exceptions_factory import AwsExceptionsFactory
 import unittest
 
 class TestEx(AwsGenericException):    
-    def __init__(self, error_type, error_code, error_msg, request_id):
-        super().__init__(http_status = 400, error_type = error_type, error_code = error_code, 
+    def __init__(self, error_type, error_msg, request_id):
+        super().__init__(http_status = 400, error_type = error_type, error_code = "AccessDenied", 
                          error_msg = error_msg, request_id = request_id)
 
 class AwsExceptionsFactoryTests(unittest.TestCase):
