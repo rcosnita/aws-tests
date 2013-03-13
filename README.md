@@ -26,7 +26,9 @@ The current version of this project allows to:
 In order to use client modules from this project you must:
 
 * Add your AWS access key / secret key into [AWS Config](https://github.com/rcosnita/aws-tests/blob/master/aws/core/aws_config.py)
-* For running SQS integration tests you must create a queue names dmsmart-integration-tests with visibility timeout set to 2 seconds.
+* For running SQS integration tests you must create a queue names dmsmart-integration-tests with visibility timeout 
+set to 2 seconds. Make sure you add permission to API principal you are using. Otherwise you will not be able to make
+any http calls.
 	
 ## Future plan
 
