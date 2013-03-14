@@ -25,6 +25,7 @@ from aws.core.request_signer import AWSRequestSignerV4
 from aws.sqs.sqs_client import SqsClient
 from aws.sqs.sqs_domain import QueueMessage
 import unittest
+from nose.plugins.skip import SkipTest
 
 class SqsClientSanityCheck(unittest.TestCase):
     '''This class provides the test cases that ensure that sqs client works correctly.'''
@@ -38,6 +39,10 @@ class SqsClientSanityCheck(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         '''Method used to setup global dependencies for test cases.'''
+        
+        if aws_config.AWS_ACCESS_KEY == "Put your access key in here" or \
+            aws_config.AWS_SECRET_KEY == "Put your access key in here":
+            raise SkipTest("This will be executed only if you provide valid AWS access / secret keys.")
         
         sqs_client = SqsClient(cls.QUEUE_REGION)
         
