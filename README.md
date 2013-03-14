@@ -1,5 +1,7 @@
 # AWS Tests
 
+![CI Status](https://api.travis-ci.org/rcosnita/aws-tests.png)
+
 Currently this project contains a set of modules written in python 3 that is aiming to provide clients for AWS services.
 I was quite dissapointed with Amazon decision not to provide an AWS python 3 sdk so I decide to do my best to contribute
 with assets that other Python lovers can use to develop AWS empowered applications.
@@ -29,7 +31,14 @@ In order to use client modules from this project you must:
 * For running SQS integration tests you must create a queue names dmsmart-integration-tests with visibility timeout 
 set to 2 seconds. Make sure you add permission to API principal you are using. Otherwise you will not be able to make
 any http calls.
-	
+
+## Continuous integration
+
+Currently, this project is build automatically at each build by Travis CI. Current build status is 
+![CI Status](https://api.travis-ci.org/rcosnita/aws-tests.png)
+
+For more information regarding the build status please visit [Build status](https://travis-ci.org/rcosnita/aws-tests)
+
 ## Future plan
 
 In the near future I intend to:
