@@ -25,7 +25,7 @@ import inspect
 import re
 
 AWS_ACCESS_KEY = "Put your access key in here"
-AWS_SECRET_KEY = "Put you secret key in here"
+AWS_SECRET_KEY = "Put your secret key in here"
 AWS_REGION = "eu-west-1"
 AWS_HOSTS = {"eu-west-1": 
                 {"sqs": "sqs.eu-west-1.amazonaws.com"}}
