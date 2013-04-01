@@ -17,8 +17,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 
 .. py:module:: aws.sqs.tests.itest_sqs_client
 
-Module used to provide sqs integration tests. It checks all operations used currently by dmsmart
-platform.
+Module used to provide sqs integration tests.
 '''
 from aws.core import aws_config
 from aws.core.request_signer import AWSRequestSignerV4
