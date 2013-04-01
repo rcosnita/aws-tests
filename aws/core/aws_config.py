@@ -21,6 +21,7 @@ Module used to hold authentication data for aws development api.
 '''
 from aws.core import aws_exceptions
 from aws.core.aws_exceptions_factory import AwsExceptionsFactory
+from aws.sqs import sqs_exceptions
 import inspect
 import os
 import re
@@ -70,3 +71,11 @@ def register_exceptions(module_obj):
             continue
         
         AwsExceptionsFactory._EX_REGISTRY[err_code[0]] = ex_class
+        
+def register_all_aws_exceptions():
+    '''Method used to register all concrete aws exceptions from the sdk.'''
+    
+    ex_modules = [aws_exceptions, sqs_exceptions]
+    
+    for ex_module in ex_modules:
+        register_exceptions(ex_module)
