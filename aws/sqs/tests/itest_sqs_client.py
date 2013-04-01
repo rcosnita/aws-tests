@@ -41,7 +41,7 @@ class SqsClientSanityCheck(unittest.TestCase):
         '''Method used to setup global dependencies for test cases.'''
         
         if aws_config.AWS_ACCESS_KEY == "Put your access key in here" or \
-            aws_config.AWS_SECRET_KEY == "Put your access key in here":
+            aws_config.AWS_SECRET_KEY == "Put your secret key in here":
             raise SkipTest("This will be executed only if you provide valid AWS access / secret keys.")
         
         sqs_client = SqsClient(cls.QUEUE_REGION)

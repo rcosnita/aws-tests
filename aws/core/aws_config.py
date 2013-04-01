@@ -22,13 +22,11 @@ Module used to hold authentication data for aws development api.
 from aws.core import aws_exceptions
 from aws.core.aws_exceptions_factory import AwsExceptionsFactory
 import inspect
+import os
 import re
 
-#AWS_ACCESS_KEY = "Put your access key in here"
-#AWS_SECRET_KEY = "Put your secret key in here"
-
-AWS_ACCESS_KEY = "Put your access key in here"
-AWS_SECRET_KEY = "Put your access key in here"
+AWS_ACCESS_KEY = os.environ.get("AWS_ACCESS_KEY", "Put your access key in here")
+AWS_SECRET_KEY = os.environ.get("AWS_SECRET_KEY", "Put your secret key in here")
 AWS_REGION = "eu-west-1"
 AWS_HOSTS = {"eu-west-1": 
                 {"sqs": "sqs.eu-west-1.amazonaws.com"}}
